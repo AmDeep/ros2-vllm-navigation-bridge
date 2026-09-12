@@ -31,6 +31,15 @@ Topics:
 
 The vLLM adapter is intentionally outside the control loop. A model may propose a waypoint, but it cannot publish motor commands directly.
 
+## NVIDIA / Isaac ROS paths
+
+- `navigation_bridge.isaac_ros_contract` documents deployment-configurable camera, depth, odometry, and velocity topic boundaries used in an Isaac ROS graph.
+- `navigation_bridge.obstacle_guard` adds a local projected-obstacle stop before `cmd_vel` is published.
+- Isaac ROS NITROS acceleration belongs in the ROS 2 graph and container deployment; this repository keeps the Python replay path independent so it can be tested without Jetson hardware.
+- A Jetson deployment can pair Isaac ROS stereo/depth perception with this controller, Triton/TensorRT perception services, and vLLM only for semantic mission decomposition.
+
+Official reference: [NVIDIA Isaac ROS](https://nvidia-isaac-ros.github.io/).
+
 ## Safety and truthfulness
 
 The controller clamps linear/angular velocity, stops inside the goal tolerance, and has no autonomous fallback goal. Missing odometry or an unavailable planner produces an explicit inactive state.
