@@ -1,5 +1,9 @@
 # ROS 2 vLLM Navigation Bridge
 
+![Architecture flowchart](docs/architecture.svg)
+
+![Verified navigation replay output](docs/replay-output.svg)
+
 A robotics stack boundary between semantic planning and real-time motion control. A vLLM endpoint can translate a natural-language mission into a structured waypoint, while a deterministic local controller converts odometry and that waypoint into bounded `geometry_msgs/Twist`-compatible commands.
 
 ## Run with replay data
